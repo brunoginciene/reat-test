@@ -2,14 +2,18 @@ import React, {useState} from "react";
 
 export default function Teste(){
     const [valor, setValor] = useState("")
-    //const [lista, setLista] = useState([])
+    const [lista, setLista] = useState([])
     
     function getValue(event){
         setValor(event.target.value)
     }
 
     function addItem(){
-        alert(valor)
+        if (valor !== ""){
+            setLista(arr => [...arr, valor])
+        } else{
+            alert("Insira um valor")
+        }
         setValor("")
     }
 
@@ -23,10 +27,9 @@ export default function Teste(){
             </input>
             <button onClick={addItem}>Add</button>
             <ul>
-                <li>
-                    Item 1
-                </li>
+                {lista.map(item => <li>{item}</li>)}
             </ul>
+            <h2>{lista.length}</h2>
         </>
     )
 }
