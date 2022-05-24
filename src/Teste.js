@@ -19,6 +19,7 @@ export default function Teste(){
 
     return(
         <>
+            <h2>Total de items: {lista.length}</h2>
             <input
                 onChange={getValue} 
                 placeholder="Write here"
@@ -27,9 +28,16 @@ export default function Teste(){
             </input>
             <button onClick={addItem}>Add</button>
             <ul>
-                {lista.map(item => <li>{item}</li>)}
+                {lista.map(item => 
+                    <li>
+                        {item}
+                        <button>
+                            Delete
+                        </button>
+                    </li>
+                )}
             </ul>
-            <h2>{lista.length}</h2>
+            
         </>
     )
 }
