@@ -10,11 +10,15 @@ export default function Teste(){
 
     function addItem(){
         if (valor !== ""){
-            setLista(arr => [...arr, valor])
+            setLista(arr => [...arr, {valor, id: Date.now()}])
         } else{
             alert("Insira um valor")
         }
         setValor("")
+    }
+
+    function removeItem(event){
+        console.log(lista.map(i =>(i.id != event.target.id)))
     }
 
     return(
@@ -29,9 +33,9 @@ export default function Teste(){
             <button onClick={addItem}>Add</button>
             <ul>
                 {lista.map(item => 
-                    <li>
-                        {item}
-                        <button>
+                    <li key={item.id}>
+                        {item.valor}
+                        <button id={item.id} onClick={removeItem}>
                             Delete
                         </button>
                     </li>
