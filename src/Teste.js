@@ -18,7 +18,7 @@ export default function Teste(){
     }
 
     function removeItem(event){
-        console.log(lista.map(i =>(i.id != event.target.id)))
+        setLista(lista.filter(i =>i.id != event.target.id))
     }
 
     return(
