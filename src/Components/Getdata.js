@@ -6,14 +6,20 @@ export default function Getdata(){
     const url = "https://jsonplaceholder.typicode.com/users"
 
     useEffect(()=>{
-        axios.get(url).then((response)=>{
-            setListadata(arr => [...arr, response.data])
-        })
+        const interval = setInterval(()=>{
+
+            axios.get(url).then((response)=>{
+                setListadata(arr => [...arr, response.data])
+            })
+
+        }, 5000)
+
+        return()=>clearInterval(interval)
+
     },[])
 
     console.log(listaData)
-    
-    
+
     return(
         <h2>Get data here: {listaData.length} </h2>
     )
